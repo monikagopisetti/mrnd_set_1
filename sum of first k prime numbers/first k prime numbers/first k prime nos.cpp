@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+// Question to find sum of first k prime numbers.. 
+// But Not to find sum of prime numbers till the given number
 void main()
 {
 	int i, j,k,flag=1,sum=0;

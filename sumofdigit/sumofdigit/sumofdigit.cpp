@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+// Dont show result inner iterations. Only Show the final Sum
 int sumofdigi(int n)
 {
 	int m, o, sum = 0;

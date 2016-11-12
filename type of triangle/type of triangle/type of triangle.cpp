@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<math.h>
+// Write test cases
 void main()
 {
 	float x1, x2, x3, y1, y2, y3;

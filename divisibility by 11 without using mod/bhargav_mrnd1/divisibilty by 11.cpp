@@ -1,5 +1,15 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+/*
+Write a Single Function which returns 0 or 1
+0 if it is not divisible
+1 if it is divisible
+pass the number to function
+*/
+
+/*
+Implement the program taking number as a integer also.
+*/
 int evendigitsum(char *str)
 {
 	int i=0,s=0,d;

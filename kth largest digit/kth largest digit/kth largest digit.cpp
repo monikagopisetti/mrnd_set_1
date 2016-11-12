@@ -1,5 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+/*
+Put generalize function for it. Should work for any number of digits. Do not take number of digits as an input
+*/
 void main()
 {
 	int n, q, rm, i = 0, j, nod, l, digits[10], tmp;

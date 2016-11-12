@@ -28,7 +28,8 @@ void main()
 	if (n1 != m2)
 	{
 		printf("matrix addition is not possible\n\n");
-
+		return; // Didnt add the return statement
+		//Program should terminate
 	}
 	else
 	{
