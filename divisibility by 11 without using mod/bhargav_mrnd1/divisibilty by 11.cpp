@@ -1,5 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+#define CASES 3
+#define MAX 10
+
 /*
 Write a Single Function which returns 0 or 1
 0 if it is not divisible
@@ -10,41 +13,52 @@ pass the number to function
 /*
 Implement the program taking number as a integer also.
 */
-int evendigitsum(char *str)
+int divisibility(char *str)
 {
-	int i=0,s=0,d;
-	while (str[i] != '\0')
+	int i=0,j=1,s1=0,d1,d2,s2=0;
+	while (str[i] != '\0')  
 	{
-		
-		d = ((int)str[i])-48;
-		s = s + d;
+		d1=((int)str[i])-48;
+		s1 = s1 + d1;
 		i = i + 2;
 	}
-	return s;
+	while (str[j] != '\0')
+	{
+		d2 = ((int)str[j]) - 48;
+		s2 = s2 + d2;
+		j = j + 2;
+	}
+
+	if ((s1 - s2) == 0)
+		return 1;
+	else
+		return 0;
 }
-int odddigitsum(char *str)
+int iscompare(int actual, int expected)
 {
-	int i=1, s = 0, d;
-	while(str[i] != '\0')
+	if (actual == expected)
+		return 1;
+	else
+		return 0;
+}
+void testcases()
+{
+	int i;
+	char input[CASES][MAX] = { { "121" }, { "157" }, { "1243" } };
+	int output[CASES] = { { 1 }, { 0 }, { 1 } };
+	for (i = 0; i < CASES; i++)
 	{
-		d = ((int)str[i])-48;
-		s = s + d;
-		i = i + 2;
+		int res = divisibility(input[i]);
+		if (iscompare(res, output[i]))
+			printf("\npassed");
+		else
+			printf("\nfailed");
 	}
-	return s;
+	printf("\n");
 }
 void main()
 {
-	char str[10] = { '\0' };
-	int se, so;
-	printf("\n enter the number");
-	scanf("%s", str);
-	se = evendigitsum(str);
-	so = odddigitsum(str);
-	if ((se - so)==0)
-		printf("\n given number is divisible by 11");
-	else
-		printf("\n given number is not divisible by 11");
+	 testcases();
 }
 
 	

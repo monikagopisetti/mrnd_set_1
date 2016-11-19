@@ -1,5 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+#include<malloc.h>
+#define CASES 4
+#define MAX 20
 // Not accepting string with spaces in it.
 int strlen(char *str)
 {
@@ -10,16 +13,12 @@ int strlen(char *str)
 	}
 	return i;
 }
-void main()
+char* revstring(char* s)
 {
 	int i, j;
 	char temp;
-	char s[30];
-	printf("\n enter the string");
-	scanf("%s", s);
-	i = 0;
+	i=0;
 	j = strlen(s) - 1;
-	printf("i=%d", i);
 	while (i <= j)
 	{
 		temp = s[i];
@@ -28,6 +27,40 @@ void main()
 		i++;
 		j--;
 	}
-	printf("j is %d", j);
-	printf("\n the reversed string is:%s", s);
+	return s;
+}
+int iscompare(char* actual, char* expected)
+{
+	int flag = 1, i;
+	for (i = 0; actual[i] != '\0'; i++)
+	{
+		if (actual[i] != expected[i])
+		{
+			flag = 0;
+			break;
+		}
+	}
+	return flag;
+
+}
+void testcases()
+{
+	int i;
+	char* res;
+	res = (char*)malloc(CASES*sizeof(char));
+	char input[CASES][MAX] = { { "monika" }, { "i am good girl" }, { "aparna" }, { "bhargav" } };
+	char output[CASES][MAX] = { { "akinom" }, { "lrig doog ma i" }, { "anrapa" }, { "vagrahb" } };
+	for (i = 0; i < CASES; i++)
+	{
+		res = revstring(input[i]);
+		if (iscompare(res, output[i]))
+			printf("\npassed");
+		else
+			printf("\nfailed");
+	}
+	printf("\n");
+}
+void main()
+{
+	 testcases();
 }

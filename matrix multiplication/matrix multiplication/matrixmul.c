@@ -1,56 +1,83 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+# define CASES 4
+typedef struct cell{
+	int a;
+}cell;
+typedef struct row{
+	cell x;
+	cell y;
+	cell z;
+}row;
+typedef struct mat{
+	row r;
+	row s;
+	row t;
+}mat;
+typedef struct matrices{
+	mat l;
+	mat m;
+	mat c;
+}matrices;
+typedef struct outputmat{
+	mat n;
+}omat;
+int iscompare(int actual[3][3],omat exp)
+{
+	int i,j;
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (actual[i][j] != exp.n[i][j])
+				return 0;
+			else
+				return 1;
+		}
+	}
+}
+void testcases()
+{
+	matrices m1 = { { { 1, 2, 3 }, { 2, 3, 1 }, { 5, 4, 2 } }, { { 2, 3, 1 }, { 1, 4, 2 }, { 1, 5, 3 } }, { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } } };
+	matrices m2 = { { { 2, 3, 1 }, { 1, 2, 1 }, { 1, 4, 6 } }, { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } }, { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } } };
+	matrices input[CASES] = { m1, m2 };
+	omat m3 = { { { 7, 26, 14 }, { 8, 23, 11 }, { 16, 41, 19 } } };
+	omat m4 = { { { 2, 3, 1 }, { 1, 2, 1 }, { 1, 4, 6 } } };
+	omat output[CASES] = { m3, m4 };
+	int** matrix = (int**)malloc(CASES*sizeof(int*));
+	int i;
+	for (i = 0; i < CASES; i++)
+	{
+		matrix = matmul(input[i]);
+		if (iscompare(matrix, output[i]))
+			return 1;
+		else
+			return 0;
+	}
+}
 void main()
 {
-	int a[10][10], b[10][10],c[10][10];
-	int m1, n1, m2, n2,i,j,k;
-	printf("enter the no of rows and columns of matrix1\n\n");
-	scanf("%d %d", &m1, &n1);
-	printf("enter the elements of matrix 1\n\n");
-	for  (i = 0; i < m1; i++)
-	{
-		for (j = 0; j < n1; j++)
-		{
-			scanf("%d", &a[i][j]);
-		}
-
-	}
-	printf("enter the rows and columns of matrix2\n\n");
-	scanf("%d %d", &m2, &n2);
-	printf("enter the elements of matrix2\n\n");
-	for (i = 0; i < m2; i++)
-	{
-		for (j = 0; j < n2; j++)
-		{
-			scanf("%d", &b[i][j]); 
-		}
-	}
-	if (n1 != m2)
+	testcases();
+}
+int** matmul(matrices v)
+{
+	int i, j, k;
+	
+	/*if (n1 != m2)
 	{
 		printf("matrix addition is not possible\n\n");
 		return; // Didnt add the return statement
 		//Program should terminate
-	}
-	else
-	{
-		for (i = 0; i < m1; i++)
+	}*/
+	for (i = 0; i < 3; i++)
 		{
-			for (j = 0; j < n2; j++)
+			for (j = 0; j < 3; j++)
 			{
-				c[i][j] = 0;
-				for (k = 0; k < n1; k++)
+				 for (K = 0; k < 3; k++)
 				{
 					c[i][j] = c[i][j] + a[i][k] * b[k][j];
 				}
 			}
-		}
-	}
-	printf("the resultant matrix is:\n\n");
-	for (i = 0; i < m1; i++)
-	{
-		for (j = 0; j < n2; j++)
-		{
-			printf("%d\n\n", c[i][j]);
 		}
 	}
 	
